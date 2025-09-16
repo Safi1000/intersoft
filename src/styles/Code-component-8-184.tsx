@@ -428,7 +428,7 @@ ul.nav-menu li:focus-within .submenu {
   width: 100%;
   height: 2px;
   background: linear-gradient(90deg, rgba(36,196,196,0), #24c4c4, #bc3723);
-  animation: runTop 1.4s linear infinite;
+  animation: runTop 1.82s linear infinite;
 }
 
 /* right line */
@@ -438,8 +438,8 @@ ul.nav-menu li:focus-within .submenu {
   width: 2px;
   height: 100%;
   background: linear-gradient(180deg, rgba(36,196,196,0), #24c4c4, #bc3723);
-  animation: runRight 1.4s linear infinite;
-  animation-delay: 0.35s;
+  animation: runRight 1.82s linear infinite;
+  animation-delay: 0.455s;
 }
 
 /* bottom line */
@@ -449,8 +449,8 @@ ul.nav-menu li:focus-within .submenu {
   width: 100%;
   height: 2px;
   background: linear-gradient(270deg, rgba(36,196,196,0), #24c4c4, #bc3723);
-  animation: runBottom 1.4s linear infinite;
-  animation-delay: 0.7s;
+  animation: runBottom 1.82s linear infinite;
+  animation-delay: 0.91s;
 }
 
 /* left line */
@@ -460,8 +460,8 @@ ul.nav-menu li:focus-within .submenu {
   width: 2px;
   height: 100%;
   background: linear-gradient(360deg, rgba(36,196,196,0), #24c4c4, #bc3723);
-  animation: runLeft 1.4s linear infinite;
-  animation-delay: 1.05s;
+  animation: runLeft 1.82s linear infinite;
+  animation-delay: 1.365s;
 }
 
 @keyframes runTop {

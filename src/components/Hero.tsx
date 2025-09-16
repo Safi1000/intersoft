@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import heroVideo from '../assets/images/herovid.mp4?url';
 
 interface HeroProps {
   onPageChange: (page: string) => void;
@@ -6,6 +7,7 @@ interface HeroProps {
 
 export default function Hero({ onPageChange }: HeroProps) {
   const [autoReveal, setAutoReveal] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => setAutoReveal(true), 1500); // start reveal after 1.5s
@@ -13,8 +15,32 @@ export default function Hero({ onPageChange }: HeroProps) {
       clearTimeout(timer);
     };
   }, []);
+
+  // Background video playback rate
+  useEffect(() => {
+    if (videoRef.current) {
+      try {
+        videoRef.current.playbackRate = 1.5;
+      } catch (e) {
+        // no-op if browser blocks modification
+      }
+    }
+  }, []);
   return (
-    <section className="gradient-bg relative min-h-screen">
+    <section className="gradient-bg relative min-h-screen overflow-hidden">
+      {/* Background video */}
+      <video
+        ref={videoRef}
+        className="absolute top-0 left-0 w-full h-full object-cover pointer-events-none"
+        src={heroVideo}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        aria-hidden="true"
+        style={{ transform: 'scale(1.2)', opacity: 0.5 }}
+      />
       {/* Animated wave layers */}
       <div className="wave wave-1"></div>
       <div className="wave wave-2"></div>
@@ -23,7 +49,7 @@ export default function Hero({ onPageChange }: HeroProps) {
       {/* Hero Content */}
       <div className="relative z-10 min-h-screen">
         {/* Main Hero Title - positioned absolutely via CSS */}
-        <h2 className={`hero-title ${autoReveal ? 'auto-reveal' : ''}`}>
+        <h2 className={`hero-title ${autoReveal ? 'auto-reveal' : ''}`} style={{ fontSize: '7.5em', letterSpacing: '0.06em' }}>
           Intersoft
           <span>Intersoft</span>
           <span>Intersoft</span>
@@ -33,12 +59,17 @@ export default function Hero({ onPageChange }: HeroProps) {
       
       {/* Subtitle and Cards positioned below the absolute h2 */}
       <div className="absolute bottom-0 left-0 right-0 z-10 pb-20">
-        <div className="text-center max-w-6xl mx-auto px-6">
+        <div className="text-center max-w-6xl md:max-w-7xl mx-auto px-6">
           {/* Subtitle */}
           <div className="mb-16">
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Leading the future through cutting-edge electronics and innovative software solutions
-            </p>
+            <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+              <span className="px-4 py-2 text-sm md:text-base rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-white/90">
+                Electronics Solutions
+              </span>
+              <span className="px-4 py-2 text-sm md:text-base rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-white/90">
+                Software Development
+              </span>
+            </div>
           </div>
 
           {/* Mission Statement Block */}

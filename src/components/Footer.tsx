@@ -2,16 +2,20 @@ interface FooterProps {
   onPageChange: (page: string) => void;
 }
 
+import { Reveal } from './Reveal';
+import logo from '../assets/images/logo.jpg';
+
 export default function Footer({ onPageChange }: FooterProps) {
   return (
     <footer className="bg-black/80 backdrop-blur-sm border-t border-white/10">
       <div className="max-w-6xl mx-auto px-6 py-16">
+        <Reveal>
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
           <div className="md:col-span-2">
             <div className="mb-6">
-              <div className="text-3xl font-bold text-white mb-4">
-                <span className="text-[#24c4c4]">Inter</span>soft International
+              <div className="flex items-center text-white mb-4">
+                <img src={logo} alt="Intersoft logo" className="shrink-0 rounded-sm object-contain" style={{ height: '84px', width: '240px' }} />
               </div>
               <p className="text-gray-400 leading-relaxed max-w-md">
                 Leading the future through cutting-edge electronics and innovative software solutions. 
@@ -118,8 +122,10 @@ export default function Footer({ onPageChange }: FooterProps) {
             </ul>
           </div>
         </div>
+        </Reveal>
 
         {/* Bottom Bar */}
+        <Reveal delay={0.08}>
         <div className="pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-400 text-sm">
@@ -138,6 +144,7 @@ export default function Footer({ onPageChange }: FooterProps) {
             </div>
           </div>
         </div>
+        </Reveal>
       </div>
     </footer>
   );

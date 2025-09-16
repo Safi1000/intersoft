@@ -1,19 +1,32 @@
-export default function Electronics() {
+interface ElectronicsProps {
+  onPageChange?: (page: string) => void;
+}
+
+import { Reveal } from './Reveal';
+import useScrollTop from './useScrollTop';
+
+export default function Electronics({ onPageChange }: ElectronicsProps) {
+  useScrollTop();
   return (
     <div className="min-h-screen gradient-bg text-white pt-24">
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold mb-6">
-            <span className="text-[#24c4c4]">Electronics</span> Solutions
-          </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Cutting-edge hardware design and electronic systems that power the future
-          </p>
+          <Reveal>
+            <h1 className="text-5xl font-bold mb-6">
+              <span className="text-[#24c4c4]">Electronics</span> Solutions
+            </h1>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Cutting-edge hardware design and electronic systems that power the future
+            </p>
+          </Reveal>
         </div>
 
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {/* Hardware Design */}
+          <Reveal>
           <div className="bg-white/5 backdrop-blur-sm rounded-lg p-8 border border-[#24c4c4]/20 hover:border-[#24c4c4]/40 transition-all duration-300 hover:transform hover:-translate-y-2">
             <div className="w-16 h-16 bg-[#24c4c4]/20 rounded-full mb-6 flex items-center justify-center">
               <svg className="w-8 h-8 text-[#24c4c4]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -29,8 +42,10 @@ export default function Electronics() {
               <li>• Prototype Development</li>
             </ul>
           </div>
+          </Reveal>
 
           {/* IoT Solutions */}
+          <Reveal delay={0.08}>
           <div className="bg-white/5 backdrop-blur-sm rounded-lg p-8 border border-[#24c4c4]/20 hover:border-[#24c4c4]/40 transition-all duration-300 hover:transform hover:-translate-y-2">
             <div className="w-16 h-16 bg-[#24c4c4]/20 rounded-full mb-6 flex items-center justify-center">
               <svg className="w-8 h-8 text-[#24c4c4]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -46,8 +61,10 @@ export default function Electronics() {
               <li>• Cloud Connectivity</li>
             </ul>
           </div>
+          </Reveal>
 
           {/* Embedded Systems */}
+          <Reveal delay={0.16}>
           <div className="bg-white/5 backdrop-blur-sm rounded-lg p-8 border border-[#24c4c4]/20 hover:border-[#24c4c4]/40 transition-all duration-300 hover:transform hover:-translate-y-2">
             <div className="w-16 h-16 bg-[#24c4c4]/20 rounded-full mb-6 flex items-center justify-center">
               <svg className="w-8 h-8 text-[#24c4c4]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -63,8 +80,10 @@ export default function Electronics() {
               <li>• System Integration</li>
             </ul>
           </div>
+          </Reveal>
 
           {/* Signal Processing */}
+          <Reveal delay={0.24}>
           <div className="bg-white/5 backdrop-blur-sm rounded-lg p-8 border border-[#24c4c4]/20 hover:border-[#24c4c4]/40 transition-all duration-300 hover:transform hover:-translate-y-2">
             <div className="w-16 h-16 bg-[#24c4c4]/20 rounded-full mb-6 flex items-center justify-center">
               <svg className="w-8 h-8 text-[#24c4c4]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -80,8 +99,10 @@ export default function Electronics() {
               <li>• Measurement Systems</li>
             </ul>
           </div>
+          </Reveal>
 
           {/* Power Systems */}
+          <Reveal delay={0.32}>
           <div className="bg-white/5 backdrop-blur-sm rounded-lg p-8 border border-[#24c4c4]/20 hover:border-[#24c4c4]/40 transition-all duration-300 hover:transform hover:-translate-y-2">
             <div className="w-16 h-16 bg-[#24c4c4]/20 rounded-full mb-6 flex items-center justify-center">
               <svg className="w-8 h-8 text-[#24c4c4]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -97,8 +118,10 @@ export default function Electronics() {
               <li>• Efficiency Optimization</li>
             </ul>
           </div>
+          </Reveal>
 
           {/* Testing & Validation */}
+          <Reveal delay={0.4}>
           <div className="bg-white/5 backdrop-blur-sm rounded-lg p-8 border border-[#24c4c4]/20 hover:border-[#24c4c4]/40 transition-all duration-300 hover:transform hover:-translate-y-2">
             <div className="w-16 h-16 bg-[#24c4c4]/20 rounded-full mb-6 flex items-center justify-center">
               <svg className="w-8 h-8 text-[#24c4c4]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -114,48 +137,65 @@ export default function Electronics() {
               <li>• Quality Assurance</li>
             </ul>
           </div>
+          </Reveal>
         </div>
 
         {/* Process Section */}
+        <Reveal>
         <div className="bg-gradient-to-r from-[#24c4c4]/10 to-[#bc3723]/10 rounded-lg p-12 mb-16 border border-white/10">
           <h2 className="text-3xl font-bold text-center mb-12">Our Development Process</h2>
           <div className="grid md:grid-cols-4 gap-8">
+            <Reveal>
             <div className="text-center">
               <div className="w-12 h-12 bg-[#24c4c4] rounded-full mx-auto mb-4 flex items-center justify-center text-black font-bold">1</div>
               <h4 className="font-bold mb-2">Consultation</h4>
               <p className="text-gray-400 text-sm">Understanding your requirements and technical specifications</p>
             </div>
+            </Reveal>
+            <Reveal delay={0.08}>
             <div className="text-center">
               <div className="w-12 h-12 bg-[#24c4c4] rounded-full mx-auto mb-4 flex items-center justify-center text-black font-bold">2</div>
               <h4 className="font-bold mb-2">Design</h4>
               <p className="text-gray-400 text-sm">Creating detailed schematics and system architecture</p>
             </div>
+            </Reveal>
+            <Reveal delay={0.16}>
             <div className="text-center">
               <div className="w-12 h-12 bg-[#24c4c4] rounded-full mx-auto mb-4 flex items-center justify-center text-black font-bold">3</div>
               <h4 className="font-bold mb-2">Prototype</h4>
               <p className="text-gray-400 text-sm">Building and testing functional prototypes</p>
             </div>
+            </Reveal>
+            <Reveal delay={0.24}>
             <div className="text-center">
               <div className="w-12 h-12 bg-[#24c4c4] rounded-full mx-auto mb-4 flex items-center justify-center text-black font-bold">4</div>
               <h4 className="font-bold mb-2">Production</h4>
               <p className="text-gray-400 text-sm">Manufacturing and quality assurance</p>
             </div>
+            </Reveal>
           </div>
         </div>
+        </Reveal>
 
         {/* Call to Action */}
         <div className="text-center">
-          <h3 className="text-3xl font-bold mb-6">Ready to bring your electronics project to life?</h3>
-          <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-            From concept to production, we provide comprehensive electronics solutions tailored to your needs.
-          </p>
-          <a href="#" className="btn">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Contact our electronics team today
-          </a>
+          <Reveal>
+            <h3 className="text-3xl font-bold mb-6">Ready to bring your electronics project to life?</h3>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
+              From concept to production, we provide comprehensive electronics solutions tailored to your needs.
+            </p>
+          </Reveal>
+          <Reveal delay={0.16}>
+            <button className="btn" onClick={() => onPageChange && onPageChange('contact')}>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Contact our electronics team today
+            </button>
+          </Reveal>
         </div>
       </div>
     </div>

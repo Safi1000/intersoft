@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { Reveal } from './Reveal';
+import useScrollTop from './useScrollTop';
 
 export default function Contact() {
+  useScrollTop();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -27,27 +30,34 @@ export default function Contact() {
     <div className="min-h-screen gradient-bg text-white pt-24">
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold mb-6">
-            Contact <span className="text-[#24c4c4]">Intersoft</span>
-          </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Ready to start your next project? Get in touch with our expert team
-          </p>
+          <Reveal>
+            <h1 className="text-5xl font-bold mb-6">
+              Contact <span className="text-[#24c4c4]">Intersoft</span>
+            </h1>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Ready to start your next project? Get in touch with our expert team
+            </p>
+          </Reveal>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact Information */}
           <div className="space-y-8">
-            <div>
-              <h2 className="text-3xl font-bold mb-8">Get in Touch</h2>
-              <p className="text-gray-300 mb-8 leading-relaxed">
-                Whether you need cutting-edge electronics solutions or innovative software development, 
-                our team is ready to bring your vision to life. Contact us today to discuss your project.
-              </p>
-            </div>
+            <Reveal>
+              <div>
+                <h2 className="text-3xl font-bold mb-8">Get in Touch</h2>
+                <p className="text-gray-300 mb-8 leading-relaxed">
+                  Whether you need cutting-edge electronics solutions or innovative software development, 
+                  our team is ready to bring your vision to life. Contact us today to discuss your project.
+                </p>
+              </div>
+            </Reveal>
 
             {/* Contact Cards */}
             <div className="space-y-6">
+              <Reveal>
               <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-[#24c4c4]/20 rounded-full flex items-center justify-center">
@@ -57,13 +67,15 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-bold">Email</h3>
-                    <a href="mailto:contact@intersoft-intl.com" className="hover-underline text-gray-300">
-                      contact@intersoft-intl.com
+                    <a href="mailto:waqar@intersoftint.com" className="hover-underline text-gray-300">
+                      waqar@intersoftint.com
                     </a>
                   </div>
                 </div>
               </div>
+              </Reveal>
 
+              <Reveal delay={0.08}>
               <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-[#24c4c4]/20 rounded-full flex items-center justify-center">
@@ -73,13 +85,15 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-bold">Phone</h3>
-                    <a href="tel:+1-555-INTERSOFT" className="hover-underline text-gray-300">
-                      +1 (555) INTERSOFT
+                    <a href="tel:+923215179514" className="hover-underline text-gray-300">
+                      +92 321 5179514
                     </a>
                   </div>
                 </div>
               </div>
+              </Reveal>
 
+              <Reveal delay={0.16}>
               <div className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-[#24c4c4]/20 rounded-full flex items-center justify-center">
@@ -91,31 +105,30 @@ export default function Contact() {
                   <div>
                     <h3 className="font-bold">Address</h3>
                     <p className="text-gray-300">
-                      123 Innovation Drive<br />
-                      Tech Valley, CA 94025
+                      Room # 03 ICE 2, EME College Peshawar Road, Rawalpindi
                     </p>
                   </div>
                 </div>
               </div>
+              </Reveal>
             </div>
 
             {/* Office Hours */}
+            <Reveal delay={0.12}>
             <div className="bg-gradient-to-r from-[#24c4c4]/10 to-[#bc3723]/10 rounded-lg p-6 border border-white/10">
               <h3 className="font-bold mb-4">Office Hours</h3>
-              <div className="grid grid-cols-2 gap-4 text-sm">
+              <div className="grid grid-cols-1 gap-2 text-sm">
                 <div>
                   <p className="text-gray-400">Monday - Friday</p>
-                  <p className="text-white">8:00 AM - 6:00 PM PST</p>
-                </div>
-                <div>
-                  <p className="text-gray-400">Saturday</p>
-                  <p className="text-white">9:00 AM - 2:00 PM PST</p>
+                  <p className="text-white">9:00 AM - 5:00 PM</p>
                 </div>
               </div>
             </div>
+            </Reveal>
           </div>
 
           {/* Contact Form */}
+          <Reveal>
           <div className="bg-white/5 backdrop-blur-sm rounded-lg p-8 border border-white/10">
             <h2 className="text-2xl font-bold mb-6">Send us a Message</h2>
             
@@ -223,20 +236,32 @@ export default function Contact() {
               </div>
             </form>
           </div>
+          </Reveal>
         </div>
 
         {/* Quick Links */}
         <div className="mt-20 text-center">
-          <h2 className="text-3xl font-bold mb-8">Explore Our Services</h2>
-          <div className="flex flex-wrap justify-center gap-4">
-            <a href="#" className="hover-underline text-lg">Electronics Solutions</a>
-            <span className="text-gray-600">•</span>
-            <a href="#" className="hover-underline text-lg">Software Development</a>
-            <span className="text-gray-600">•</span>
-            <a href="#" className="hover-underline text-lg">IoT Development</a>
-            <span className="text-gray-600">•</span>
-            <a href="#" className="hover-underline text-lg">Enterprise Solutions</a>
-          </div>
+          <Reveal>
+            <h2 className="text-4xl md:text-5xl font-bold mb-10">Explore Our Services</h2>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <div className="flex flex-wrap justify-center gap-6 md:gap-10" style={{ marginTop: '15px' }}>
+              <a href="#electronics" className="btn text-lg md:text-xl">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Electronics Solutions
+              </a>
+              <a href="#software" className="btn text-lg md:text-xl">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Software Development
+              </a>
+            </div>
+          </Reveal>
         </div>
       </div>
     </div>

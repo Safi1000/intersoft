@@ -1,0 +1,27 @@
+# Cursor Rules
+
+# Visual Motion: Subtle Scroll Reveals
+- Use the existing Reveal component at src/components/Reveal.tsx for fade/slide-in on new or modified sections in src/.
+- Defaults: duration ≤ 400ms (350ms preferred), y offset ≈ 24px, easeOut. Viewport triggers once.
+- Apply reveals to section headings, paragraphs, cards, images, and key CTAs. Avoid wrapping Navigation/Footer.
+- Stagger siblings by ~100ms via Reveal delays (0, 0.08s, 0.16s…) or a container.
+- Ensure images reserve space (fixed aspect or height) to avoid layout shift.
+
+# Implementation Checklist (apply on each relevant change)
+- Wrap new/updated blocks with <Reveal> … </Reveal>.
+- For grids/lists, stagger children with incremental delays.
+- Keep total duration ≤ 0.4s; keep motion subtle on mobile.
+- Don’t nest multiple Reveals on the same node.
+
+# Imports
+- Import Reveal with the correct relative path, e.g.: import { Reveal } from '../components/Reveal'.
+
+# Consistency & Quality
+- Maintain consistent spacing and widths using max-w-6xl md:max-w-7xl mx-auto px-6.
+- Use text-white/90 for body copy on dark backgrounds to reduce glare.
+- Card visuals: rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm shadow-[0_10px_40px_rgba(0,0,0,0.3)].
+- Images over dark backgrounds can add a legibility overlay: absolute inset-0 bg-gradient-to-t from-black/40 to-transparent.
+
+# Notes
+- Do not wrap global layout shells (Navigation, Footer) to reduce motion fatigue.
+- Keep motion accessible and minimal; prefer reveal-once behavior.

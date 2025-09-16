@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { Reveal } from './Reveal';
+import logo from '../assets/images/logo.jpg';
 
 interface NavigationProps {
   currentPage: string;
@@ -12,11 +14,14 @@ export default function Navigation({ currentPage, onPageChange }: NavigationProp
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="text-2xl font-bold text-white">
-            <span className="text-[#24c4c4]">Inter</span>soft
-          </div>
+          <Reveal>
+            <div className="flex items-center text-white">
+              <img src={logo} alt="Intersoft logo" className="shrink-0 rounded-sm object-contain" style={{ height: '54px', width: '153px' }} />
+            </div>
+          </Reveal>
 
           {/* Navigation Menu */}
+          <Reveal delay={0.06}>
           <ul className="nav-menu">
             <li>
               <a 
@@ -92,6 +97,7 @@ export default function Navigation({ currentPage, onPageChange }: NavigationProp
               </a>
             </li>
           </ul>
+          </Reveal>
         </div>
       </div>
     </nav>

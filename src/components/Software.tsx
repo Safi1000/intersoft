@@ -1,19 +1,32 @@
-export default function Software() {
+interface SoftwareProps {
+  onPageChange?: (page: string) => void;
+}
+
+import { Reveal } from './Reveal';
+import useScrollTop from './useScrollTop';
+
+export default function Software({ onPageChange }: SoftwareProps) {
+  useScrollTop();
   return (
     <div className="min-h-screen gradient-bg text-white pt-24">
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold mb-6">
-            <span className="text-[#bc3723]">Software</span> Development
-          </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Custom software solutions that power businesses and drive innovation
-          </p>
+          <Reveal>
+            <h1 className="text-5xl font-bold mb-6">
+              <span className="text-[#bc3723]">Software</span> Development
+            </h1>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Custom software solutions that power businesses and drive innovation
+            </p>
+          </Reveal>
         </div>
 
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {/* Web Applications */}
+          <Reveal>
           <div className="bg-white/5 backdrop-blur-sm rounded-lg p-8 border border-[#bc3723]/20 hover:border-[#bc3723]/40 transition-all duration-300 hover:transform hover:-translate-y-2">
             <div className="w-16 h-16 bg-[#bc3723]/20 rounded-full mb-6 flex items-center justify-center">
               <svg className="w-8 h-8 text-[#bc3723]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -29,8 +42,10 @@ export default function Software() {
               <li>• Cloud Deployment</li>
             </ul>
           </div>
+          </Reveal>
 
           {/* Mobile Applications */}
+          <Reveal delay={0.08}>
           <div className="bg-white/5 backdrop-blur-sm rounded-lg p-8 border border-[#bc3723]/20 hover:border-[#bc3723]/40 transition-all duration-300 hover:transform hover:-translate-y-2">
             <div className="w-16 h-16 bg-[#bc3723]/20 rounded-full mb-6 flex items-center justify-center">
               <svg className="w-8 h-8 text-[#bc3723]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -46,8 +61,10 @@ export default function Software() {
               <li>• App Store Deployment</li>
             </ul>
           </div>
+          </Reveal>
 
           {/* Enterprise Software */}
+          <Reveal delay={0.16}>
           <div className="bg-white/5 backdrop-blur-sm rounded-lg p-8 border border-[#bc3723]/20 hover:border-[#bc3723]/40 transition-all duration-300 hover:transform hover:-translate-y-2">
             <div className="w-16 h-16 bg-[#bc3723]/20 rounded-full mb-6 flex items-center justify-center">
               <svg className="w-8 h-8 text-[#bc3723]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -63,8 +80,10 @@ export default function Software() {
               <li>• System Integration</li>
             </ul>
           </div>
+          </Reveal>
 
           {/* Data Analytics */}
+          <Reveal delay={0.24}>
           <div className="bg-white/5 backdrop-blur-sm rounded-lg p-8 border border-[#bc3723]/20 hover:border-[#bc3723]/40 transition-all duration-300 hover:transform hover:-translate-y-2">
             <div className="w-16 h-16 bg-[#bc3723]/20 rounded-full mb-6 flex items-center justify-center">
               <svg className="w-8 h-8 text-[#bc3723]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -80,8 +99,10 @@ export default function Software() {
               <li>• Predictive Analytics</li>
             </ul>
           </div>
+          </Reveal>
 
           {/* DevOps & Cloud */}
+          <Reveal delay={0.32}>
           <div className="bg-white/5 backdrop-blur-sm rounded-lg p-8 border border-[#bc3723]/20 hover:border-[#bc3723]/40 transition-all duration-300 hover:transform hover:-translate-y-2">
             <div className="w-16 h-16 bg-[#bc3723]/20 rounded-full mb-6 flex items-center justify-center">
               <svg className="w-8 h-8 text-[#bc3723]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -97,8 +118,10 @@ export default function Software() {
               <li>• Infrastructure as Code</li>
             </ul>
           </div>
+          </Reveal>
 
           {/* AI & Machine Learning */}
+          <Reveal delay={0.4}>
           <div className="bg-white/5 backdrop-blur-sm rounded-lg p-8 border border-[#bc3723]/20 hover:border-[#bc3723]/40 transition-all duration-300 hover:transform hover:-translate-y-2">
             <div className="w-16 h-16 bg-[#bc3723]/20 rounded-full mb-6 flex items-center justify-center">
               <svg className="w-8 h-8 text-[#bc3723]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -114,9 +137,11 @@ export default function Software() {
               <li>• Recommendation Systems</li>
             </ul>
           </div>
+          </Reveal>
         </div>
 
         {/* Technology Stack */}
+        <Reveal>
         <div className="bg-gradient-to-r from-[#bc3723]/10 to-[#24c4c4]/10 rounded-lg p-12 mb-16 border border-white/10">
           <h2 className="text-3xl font-bold text-center mb-12">Our Technology Stack</h2>
           <div className="grid md:grid-cols-4 gap-8">
@@ -158,11 +183,15 @@ export default function Software() {
             </div>
           </div>
         </div>
+        </Reveal>
 
         {/* Development Methodology */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-12">Our Development Approach</h2>
+          <Reveal>
+            <h2 className="text-3xl font-bold text-center mb-12">Our Development Approach</h2>
+          </Reveal>
           <div className="grid md:grid-cols-3 gap-8">
+            <Reveal>
             <div className="text-center bg-white/5 backdrop-blur-sm rounded-lg p-8 border border-white/10">
               <div className="w-16 h-16 bg-[#bc3723]/20 rounded-full mx-auto mb-4 flex items-center justify-center">
                 <svg className="w-8 h-8 text-[#bc3723]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -172,7 +201,8 @@ export default function Software() {
               <h3 className="text-xl font-bold mb-3">Agile Development</h3>
               <p className="text-gray-400">Iterative development with regular feedback and continuous improvement</p>
             </div>
-
+            </Reveal>
+            <Reveal delay={0.08}>
             <div className="text-center bg-white/5 backdrop-blur-sm rounded-lg p-8 border border-white/10">
               <div className="w-16 h-16 bg-[#bc3723]/20 rounded-full mx-auto mb-4 flex items-center justify-center">
                 <svg className="w-8 h-8 text-[#bc3723]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -182,7 +212,8 @@ export default function Software() {
               <h3 className="text-xl font-bold mb-3">Quality Assurance</h3>
               <p className="text-gray-400">Comprehensive testing and code review processes for reliable software</p>
             </div>
-
+            </Reveal>
+            <Reveal delay={0.16}>
             <div className="text-center bg-white/5 backdrop-blur-sm rounded-lg p-8 border border-white/10">
               <div className="w-16 h-16 bg-[#bc3723]/20 rounded-full mx-auto mb-4 flex items-center justify-center">
                 <svg className="w-8 h-8 text-[#bc3723]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -192,22 +223,29 @@ export default function Software() {
               <h3 className="text-xl font-bold mb-3">Scalable Architecture</h3>
               <p className="text-gray-400">Building solutions that grow with your business needs</p>
             </div>
+            </Reveal>
           </div>
         </div>
 
         {/* Call to Action */}
         <div className="text-center">
-          <h3 className="text-3xl font-bold mb-6">Ready to transform your business with custom software?</h3>
-          <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-            From web applications to enterprise systems, we build software solutions that drive results.
-          </p>
-          <a href="#" className="btn">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Discuss your software project with our team
-          </a>
+          <Reveal>
+            <h3 className="text-3xl font-bold mb-6">Ready to transform your business with custom software?</h3>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
+              From web applications to enterprise systems, we build software solutions that drive results.
+            </p>
+          </Reveal>
+          <Reveal delay={0.16}>
+            <button className="btn" onClick={() => onPageChange && onPageChange('contact')}>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Discuss your software project with our team
+            </button>
+          </Reveal>
         </div>
       </div>
     </div>
