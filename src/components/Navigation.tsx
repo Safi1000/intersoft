@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Reveal } from './Reveal';
-import logo from '../assets/images/logo.jpg';
 
 interface NavigationProps {
   currentPage: string;
@@ -16,7 +15,7 @@ export default function Navigation({ currentPage, onPageChange }: NavigationProp
           {/* Logo */}
           <Reveal>
             <div className="flex items-center text-white">
-              <img src={logo} alt="Intersoft logo" className="shrink-0 rounded-sm object-contain" style={{ height: '54px', width: '153px' }} />
+              <img src="/images/logo.jpg" alt="Intersoft logo" className="shrink-0 rounded-sm object-contain" style={{ height: '54px', width: '153px' }} />
             </div>
           </Reveal>
 

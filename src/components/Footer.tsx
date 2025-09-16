@@ -3,7 +3,6 @@ interface FooterProps {
 }
 
 import { Reveal } from './Reveal';
-import logo from '../assets/images/logo.jpg';
 
 export default function Footer({ onPageChange }: FooterProps) {
   return (
@@ -15,7 +14,7 @@ export default function Footer({ onPageChange }: FooterProps) {
           <div className="md:col-span-2">
             <div className="mb-6">
               <div className="flex items-center text-white mb-4">
-                <img src={logo} alt="Intersoft logo" className="shrink-0 rounded-sm object-contain" style={{ height: '84px', width: '240px' }} />
+                <img src="/images/logo.jpg" alt="Intersoft logo" className="shrink-0 rounded-sm object-contain" style={{ height: '84px', width: '240px' }} />
               </div>
               <p className="text-gray-400 leading-relaxed max-w-md">
                 Leading the future through cutting-edge electronics and innovative software solutions. 

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import heroVideo from '../assets/images/herovid.mp4?url';
+// Use public path for production reliability
 
 interface HeroProps {
   onPageChange: (page: string) => void;
@@ -32,7 +32,7 @@ export default function Hero({ onPageChange }: HeroProps) {
       <video
         ref={videoRef}
         className="absolute top-0 left-0 w-full h-full object-cover pointer-events-none"
-        src={heroVideo}
+        src="/images/herovid.mp4"
         autoPlay
         muted
         loop

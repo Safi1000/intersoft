@@ -6,8 +6,7 @@ import Electronics from './components/Electronics';
 import Software from './components/Software';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import homeElectronics from './assets/images/home_electronics.jpg';
-import homeSoftware from './assets/images/home_software.jpg';
+// Use public assets for production reliability
 import { Reveal } from './components/Reveal';
 // import SectionDivider from './components/SectionDivider';
 
@@ -121,7 +120,7 @@ export default function App() {
                     </div>
                     <div className="text-center md:text-right">
                       <div className="relative inline-block w-full max-w-[600px] overflow-hidden rounded-2xl border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.3)]">
-                        <img src={homeElectronics} alt="Electronics solutions" className="w-full h-[380px] md:h-[460px] object-cover" />
+                        <img src="/images/home_electronics.jpg" alt="Electronics solutions" className="w-full h-[380px] md:h-[460px] object-cover" />
                         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                       </div>
                     </div>
@@ -159,7 +158,7 @@ export default function App() {
                     </div>
                     <div className="order-1 md:order-2 text-center md:text-left">
                       <div className="relative inline-block w-full max-w-[600px] overflow-hidden rounded-2xl border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.3)]">
-                        <img src={homeSoftware} alt="Software development" className="w-full h-[380px] md:h-[460px] object-cover" />
+                        <img src="/images/home_software.jpg" alt="Software development" className="w-full h-[380px] md:h-[460px] object-cover" />
                         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                       </div>
                     </div>
