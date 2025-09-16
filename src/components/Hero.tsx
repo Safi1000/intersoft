@@ -3,18 +3,21 @@ import React, { useEffect, useRef, useState } from 'react';
 
 interface HeroProps {
   onPageChange: (page: string) => void;
+  revealTrigger?: boolean;
+  revealDelayMs?: number;
 }
 
-export default function Hero({ onPageChange }: HeroProps) {
+export default function Hero({ onPageChange, revealTrigger, revealDelayMs }: HeroProps) {
   const [autoReveal, setAutoReveal] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => setAutoReveal(true), 1500); // start reveal after 1.5s
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
+    if (!revealTrigger) return;
+    setAutoReveal(false);
+    const delay = typeof revealDelayMs === 'number' ? revealDelayMs : 1500;
+    const timer = setTimeout(() => setAutoReveal(true), delay);
+    return () => clearTimeout(timer);
+  }, [revealTrigger, revealDelayMs]);
 
   // Background video playback rate
   useEffect(() => {
@@ -78,7 +81,7 @@ export default function Hero({ onPageChange }: HeroProps) {
               <div className="absolute inset-0 bg-gradient-to-r from-[#24c4c4]/5 via-transparent to-[#bc3723]/5 rounded-lg"></div>
               <div className="relative z-10">
                 <blockquote className="text-2xl md:text-3xl font-light text-white/90 leading-relaxed italic">
-                  "Bridging the gap between <span className="brand-gradient-text font-medium">innovation</span> and <span className="brand-gradient-text font-medium">implementation</span>, 
+                  "Bridging the gap between <span className="font-medium">innovation</span> and <span className="font-medium">implementation</span>, 
                   we transform visionary ideas into tangible solutions that shape tomorrow's technological landscape."
                 </blockquote>
                 <div className="mt-8 h-1 w-24 mx-auto bg-gradient-to-r from-[#24c4c4] to-[#bc3723] rounded-full"></div>

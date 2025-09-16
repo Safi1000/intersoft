@@ -12,7 +12,10 @@ import { Reveal } from './components/Reveal';
 import LoaderOverlay from './components/Loader';
 
 export default function App() {
-  const [isReady, setIsReady] = useState(false);
+  const initialReady = typeof document !== 'undefined' && document.readyState === 'complete';
+  const [isReady, setIsReady] = useState(initialReady);
+  // Mount overlay only if load takes longer than a short threshold to avoid flash on fast loads
+  const [mountLoader, setMountLoader] = useState(false);
   const getPageFromHash = (): string => {
     if (typeof window === 'undefined') return 'home';
     const raw = window.location.hash.replace('#', '').trim().toLowerCase();
@@ -61,43 +64,33 @@ export default function App() {
     return () => window.removeEventListener('hashchange', onHashChange);
   }, []);
 
-  // Wait for critical media to be ready (logo img, hero video, homepage images)
+  // Global gate: wait until the entire page (all resources) finishes loading
   useEffect(() => {
-    const promises: Promise<unknown>[] = [];
-
-    // Preload logo
-    promises.push(new Promise((resolve) => {
-      const img = new Image();
-      img.onload = resolve;
-      img.onerror = resolve;
-      img.src = '/images/logo.jpg';
-    }));
-
-    // Preload homepage images
-    ['/images/home_electronics.jpg', '/images/home_software.jpg'].forEach((src) => {
-      promises.push(new Promise((resolve) => {
-        const img = new Image();
-        img.onload = resolve;
-        img.onerror = resolve;
-        img.src = src;
-      }));
-    });
-
-    // Attempt to buffer hero video metadata
-    promises.push(new Promise((resolve) => {
-      const video = document.createElement('video');
-      video.preload = 'auto';
-      video.muted = true;
-      video.playsInline = true as any;
-      video.onloadeddata = () => resolve(null);
-      video.onerror = () => resolve(null);
-      video.src = '/images/herovid.mp4';
-    }));
-
-    Promise.all(promises).then(() => {
-      setIsReady(true);
-    });
+    const handler = () => setIsReady(true);
+    if (document.readyState === 'complete') {
+      handler();
+      return;
+    }
+    window.addEventListener('load', handler, { once: true });
+    return () => window.removeEventListener('load', handler);
   }, []);
+
+  // If not instantly ready, mount overlay after a tiny delay to prevent flash when loads are extremely fast
+  useEffect(() => {
+    if (initialReady) return;
+    if (isReady) return;
+    const t = setTimeout(() => {
+      if (!isReady) setMountLoader(true);
+    }, 150);
+    return () => clearTimeout(t);
+  }, [initialReady, isReady]);
+
+  // After ready, keep overlay for fade-out, then unmount
+  useEffect(() => {
+    if (!isReady || !mountLoader) return;
+    const t = setTimeout(() => setMountLoader(false), 350);
+    return () => clearTimeout(t);
+  }, [isReady, mountLoader]);
 
   const renderPage = () => {
     switch (currentPage) {
@@ -113,7 +106,7 @@ export default function App() {
       default:
         return (
           <>
-            <Hero onPageChange={setCurrentPage} />
+            <Hero onPageChange={setCurrentPage} revealTrigger={isReady} revealDelayMs={1750} />
             
             {/* Quick Overview Section */}
             <section className="bg-black py-20 md:py-28">
@@ -121,7 +114,7 @@ export default function App() {
                 <div className="text-center mb-16">
                   <Reveal>
                     <h2 className="text-4xl font-bold mb-6">
-                      Intersoft <span className="brand-gradient-text">International</span>
+                      Intersoft <span>International</span>
                     </h2>
                   </Reveal>
                   <Reveal delay={0.08}>
@@ -139,7 +132,7 @@ export default function App() {
                 <section className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm shadow-[0_10px_40px_rgba(0,0,0,0.3)] p-8 mb-16 md:min-h-[680px]">
                   <div className="grid md:grid-cols-2 gap-8 items-center">
                     <div>
-                      <h3 className="text-3xl font-bold text-[#24c4c4] mb-4">Electronics Solutions</h3>
+                      <h3 className="text-3xl font-bold brand-teal mb-4">Electronics Solutions</h3>
                       <p className="text-gray-300 mb-6">
                         We design and build reliable hardware systems — from concept to production. Our team
                         covers PCB design, embedded firmware, sensor integration, low-power systems, and EMC-ready
@@ -176,7 +169,7 @@ export default function App() {
                 <section className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm shadow-[0_10px_40px_rgba(0,0,0,0.3)] p-8 mb-20 md:min-h-[680px]">
                   <div className="grid md:grid-cols-2 gap-8 items-center">
                     <div className="order-2 md:order-1">
-                      <h3 className="text-3xl font-bold text-[#bc3723] mb-4">Software Development</h3>
+                      <h3 className="text-3xl font-bold brand-red mb-4">Software Development</h3>
                       <p className="text-gray-300 mb-6">
                         We build scalable, secure software — from product MVPs to enterprise platforms. Our
                         delivery includes cloud‑native backends, modern web/mobile frontends, CI/CD pipelines,
@@ -317,10 +310,10 @@ export default function App() {
 
   return (
     <div className="min-h-screen gradient-bg text-white">
-      {!isReady && <LoaderOverlay />}
+      {mountLoader && <LoaderOverlay isVisible={!isReady} />}
       <Navigation currentPage={currentPage} onPageChange={setCurrentPage} />
       
-      <main style={{ visibility: isReady ? 'visible' : 'hidden' }}>
+      <main style={{ opacity: isReady ? 1 : 0, transition: 'opacity .3s ease' }}>
         {renderPage()}
       </main>
       

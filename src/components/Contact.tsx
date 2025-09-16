@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ThemedSelect from './ThemedSelect';
 import { Reveal } from './Reveal';
 import useScrollTop from './useScrollTop';
 
@@ -20,9 +21,19 @@ export default function Contact() {
     }));
   };
 
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [labelReturnKey, setLabelReturnKey] = useState(0);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
+    // Simulate success animation on click
+    setIsSuccess(true);
+    // Reset after animation completes
+    setTimeout(() => {
+      setIsSuccess(false);
+      // Trigger label return animation by toggling a key
+      setLabelReturnKey(prev => prev + 1);
+    }, 2200);
     console.log('Form submitted:', formData);
   };
 
@@ -129,7 +140,7 @@ export default function Contact() {
 
           {/* Contact Form */}
           <Reveal>
-          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-8 border border-white/10">
+          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-8 border border-white/10 form-dark">
             <h2 className="text-2xl font-bold mb-6">Send us a Message</h2>
             
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -187,20 +198,20 @@ export default function Contact() {
                   <label htmlFor="service" className="block text-sm font-medium text-gray-300 mb-2">
                     Service Interest
                   </label>
-                  <select
+                  <ThemedSelect
                     id="service"
-                    name="service"
                     value={formData.service}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg focus:border-[#24c4c4] focus:outline-none focus:ring-2 focus:ring-[#24c4c4]/20 transition-colors text-white"
-                  >
-                    <option value="">Select a service</option>
-                    <option value="electronics">Electronics Solutions</option>
-                    <option value="software">Software Development</option>
-                    <option value="iot">IoT Development</option>
-                    <option value="consultation">Consultation</option>
-                    <option value="other">Other</option>
-                  </select>
+                    onChange={(v) => setFormData(prev => ({ ...prev, service: v }))}
+                    options={[
+                      { value: '', label: 'Select a service' },
+                      { value: 'electronics', label: 'Electronics Solutions' },
+                      { value: 'software', label: 'Software Development' },
+                      { value: 'iot', label: 'IoT Development' },
+                      { value: 'consultation', label: 'Consultation' },
+                      { value: 'other', label: 'Other' },
+                    ]}
+                    className="mt-0"
+                  />
                 </div>
               </div>
 
@@ -221,14 +232,17 @@ export default function Contact() {
               </div>
 
               <div className="text-center">
-                <button
-                  type="submit"
-                  className="btn submit-btn"
-                >
-                  Send Message
-                  <svg className="w-5 h-5 opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
+                <button type="submit" className={`btn submit-btn ${isSuccess ? 'is-success' : ''}`} disabled={isSuccess}>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  {!isSuccess && <span key={labelReturnKey} className="submit-label label-return">Send Message</span>}
+                  {isSuccess && (
+                    <svg className="submit-check" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#24c4c4" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M5 13l4 4L19 7" />
+                    </svg>
+                  )}
                 </button>
                 <p className="text-sm text-gray-400 mt-4">
                   We'll get back to you within 24 hours
