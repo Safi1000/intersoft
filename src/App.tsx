@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -9,8 +9,10 @@ import Footer from './components/Footer';
 // Use public assets for production reliability
 import { Reveal } from './components/Reveal';
 // import SectionDivider from './components/SectionDivider';
+import LoaderOverlay from './components/Loader';
 
 export default function App() {
+  const [isReady, setIsReady] = useState(false);
   const getPageFromHash = (): string => {
     if (typeof window === 'undefined') return 'home';
     const raw = window.location.hash.replace('#', '').trim().toLowerCase();
@@ -57,6 +59,44 @@ export default function App() {
     };
     window.addEventListener('hashchange', onHashChange);
     return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
+
+  // Wait for critical media to be ready (logo img, hero video, homepage images)
+  useEffect(() => {
+    const promises: Promise<unknown>[] = [];
+
+    // Preload logo
+    promises.push(new Promise((resolve) => {
+      const img = new Image();
+      img.onload = resolve;
+      img.onerror = resolve;
+      img.src = '/images/logo.jpg';
+    }));
+
+    // Preload homepage images
+    ['/images/home_electronics.jpg', '/images/home_software.jpg'].forEach((src) => {
+      promises.push(new Promise((resolve) => {
+        const img = new Image();
+        img.onload = resolve;
+        img.onerror = resolve;
+        img.src = src;
+      }));
+    });
+
+    // Attempt to buffer hero video metadata
+    promises.push(new Promise((resolve) => {
+      const video = document.createElement('video');
+      video.preload = 'auto';
+      video.muted = true;
+      video.playsInline = true as any;
+      video.onloadeddata = () => resolve(null);
+      video.onerror = () => resolve(null);
+      video.src = '/images/herovid.mp4';
+    }));
+
+    Promise.all(promises).then(() => {
+      setIsReady(true);
+    });
   }, []);
 
   const renderPage = () => {
@@ -277,9 +317,10 @@ export default function App() {
 
   return (
     <div className="min-h-screen gradient-bg text-white">
+      {!isReady && <LoaderOverlay />}
       <Navigation currentPage={currentPage} onPageChange={setCurrentPage} />
       
-      <main>
+      <main style={{ visibility: isReady ? 'visible' : 'hidden' }}>
         {renderPage()}
       </main>
       

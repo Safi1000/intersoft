@@ -236,6 +236,44 @@ html {
 
 /* ============= INTERSOFT INTERNATIONAL CUSTOM STYLES ============= */
 
+/* Newton's Cradle Loader */
+.newtons-cradle {
+  --uib-size: 54px;
+  --uib-speed: 1.2s;
+  --uib-color: #24c4c4;
+  position: relative;
+  display: inline-block;
+  width: var(--uib-size);
+  height: var(--uib-size);
+}
+.newtons-cradle__dot {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  width: 20%;
+  height: 20%;
+  border-radius: 50%;
+  background-color: var(--uib-color);
+  transform: translate(0, -50%);
+}
+.newtons-cradle__dot:nth-child(1) { left: 0; animation: cradle-left var(--uib-speed) ease-in-out infinite; }
+.newtons-cradle__dot:nth-child(2) { left: 25%; }
+.newtons-cradle__dot:nth-child(3) { left: 50%; }
+.newtons-cradle__dot:nth-child(4) { left: 75%; animation: cradle-right var(--uib-speed) ease-in-out infinite; }
+
+@keyframes cradle-left {
+  0% { transform: translate(-100%, -50%) rotate(0deg); }
+  25% { transform: translate(-100%, -50%) rotate(-35deg); }
+  50% { transform: translate(0, -50%) rotate(0deg); }
+  100% { transform: translate(0, -50%) rotate(0deg); }
+}
+@keyframes cradle-right {
+  0% { transform: translate(0, -50%) rotate(0deg); }
+  50% { transform: translate(0, -50%) rotate(0deg); }
+  75% { transform: translate(100%, -50%) rotate(35deg); }
+  100% { transform: translate(100%, -50%) rotate(35deg); }
+}
+
 /* Hero Main Title (Intersoft International) */
 body { 
   margin: 0;
