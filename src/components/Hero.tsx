@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import DecryptedText from './DecryptedText';
 // Use public path for production reliability
 
 interface HeroProps {
@@ -12,12 +13,9 @@ export default function Hero({ onPageChange, revealTrigger, revealDelayMs }: Her
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
-    if (!revealTrigger) return;
-    setAutoReveal(false);
-    const delay = typeof revealDelayMs === 'number' ? revealDelayMs : 1500;
-    const timer = setTimeout(() => setAutoReveal(true), delay);
-    return () => clearTimeout(timer);
-  }, [revealTrigger, revealDelayMs]);
+    // Disable legacy auto-reveal spinner logic to prevent flicker with new title
+    setAutoReveal(true);
+  }, []);
 
   // Background video playback rate
   useEffect(() => {
@@ -30,7 +28,7 @@ export default function Hero({ onPageChange, revealTrigger, revealDelayMs }: Her
     }
   }, []);
   return (
-    <section className="gradient-bg relative min-h-screen overflow-hidden">
+    <section className="gradient-bg relative min-h-screen overflow-hidden pt-28 md:pt-36">
       {/* Background video */}
       <video
         ref={videoRef}
@@ -50,18 +48,41 @@ export default function Hero({ onPageChange, revealTrigger, revealDelayMs }: Her
       <div className="wave wave-3"></div>
       
       {/* Hero Content */}
-      <div className="relative z-10 min-h-screen">
-        {/* Main Hero Title - positioned absolutely via CSS */}
-        <h2 className={`hero-title ${autoReveal ? 'auto-reveal' : ''}`} style={{ fontSize: '7.5em', letterSpacing: '0.06em' }}>
-          Intersoft
-          <span>Intersoft</span>
-          <span>Intersoft</span>
-          <span>International</span>
-        </h2>
+      <div className="relative z-10 min-h-[calc(100vh-6rem)] md:min-h-[calc(100vh-7rem)] flex flex-col items-center justify-center text-center pt-25 md:pt-38" style={{ marginTop: '260px' }}>
+        <div className="flex flex-col items-center gap-0 md:gap-1">
+          <div className="inline-block">
+            <DecryptedText
+              text={'INTERSOFT'}
+              animateOn="view"
+              revealDirection="center"
+              sequential
+              speed={80}
+              className="brand-red font-extrabold tracking-tight uppercase"
+              parentClassName="leading-[0.8]"
+              style={{ fontSize: 'clamp(2.03125rem, 6.09375vw, 9.75rem)' }}
+              encryptedClassName="brand-red"
+            />
+            <div className="hero-underline underline-red"></div>
+          </div>
+          <div className="inline-block">
+            <DecryptedText
+              text={'INTERNATIONAL'}
+              animateOn="view"
+              revealDirection="center"
+              sequential
+              speed={80}
+              className="brand-teal font-extrabold tracking-tight uppercase"
+              parentClassName="leading-[0.8]"
+              style={{ fontSize: 'clamp(2.03125rem, 6.09375vw, 9.75rem)' }}
+              encryptedClassName="brand-teal"
+            />
+            <div className="hero-underline underline-teal"></div>
+          </div>
+        </div>
       </div>
       
       {/* Subtitle and Cards positioned below the absolute h2 */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 pb-20">
+      <div className="absolute bottom-0 left-0 right-0 z-10 pb-6 md:pb-8">
         <div className="text-center max-w-6xl md:max-w-7xl mx-auto px-6">
           {/* Subtitle */}
           <div className="mb-16">

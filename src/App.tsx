@@ -5,21 +5,51 @@ import About from './components/About';
 import Electronics from './components/Electronics';
 import Software from './components/Software';
 import Contact from './components/Contact';
+import HardwareDesign from './components/electronics/HardwareDesign';
+import IoTSolutions from './components/electronics/IoTSolutions';
+import EmbeddedSystems from './components/electronics/EmbeddedSystems';
+import SignalProcessing from './components/electronics/SignalProcessing';
+import PowerSystems from './components/electronics/PowerSystems';
+import TestingValidation from './components/electronics/TestingValidation';
+import WebApplications from './components/software/WebApplications';
+import MobileApplications from './components/software/MobileApplications';
+import EnterpriseSoftware from './components/software/EnterpriseSoftware';
+import DataAnalytics from './components/software/DataAnalytics';
+import DevOpsCloud from './components/software/DevOpsCloud';
+import AI_MachineLearning from './components/software/AI_MachineLearning';
 import Footer from './components/Footer';
 // Use public assets for production reliability
 import { Reveal } from './components/Reveal';
 // import SectionDivider from './components/SectionDivider';
-import LoaderOverlay from './components/Loader';
+// import LoaderOverlay from './components/Loader';
 
 export default function App() {
   const initialReady = typeof document !== 'undefined' && document.readyState === 'complete';
   const [isReady, setIsReady] = useState(initialReady);
-  // Mount overlay only if load takes longer than a short threshold to avoid flash on fast loads
-  const [mountLoader, setMountLoader] = useState(false);
   const getPageFromHash = (): string => {
     if (typeof window === 'undefined') return 'home';
     const raw = window.location.hash.replace('#', '').trim().toLowerCase();
-    const valid = ['home', 'about', 'electronics', 'software', 'contact'];
+    const valid = [
+      'home',
+      'about',
+      'electronics',
+      'software',
+      'contact',
+      // electronics subpages
+      'electronics-hardware',
+      'electronics-iot',
+      'electronics-embedded',
+      'electronics-signal',
+      'electronics-power',
+      'electronics-testing',
+      // software subpages
+      'software-web',
+      'software-mobile',
+      'software-enterprise',
+      'software-data',
+      'software-devops',
+      'software-ml',
+    ];
     return valid.includes(raw) ? raw : 'home';
   };
 
@@ -75,22 +105,7 @@ export default function App() {
     return () => window.removeEventListener('load', handler);
   }, []);
 
-  // If not instantly ready, mount overlay after a tiny delay to prevent flash when loads are extremely fast
-  useEffect(() => {
-    if (initialReady) return;
-    if (isReady) return;
-    const t = setTimeout(() => {
-      if (!isReady) setMountLoader(true);
-    }, 150);
-    return () => clearTimeout(t);
-  }, [initialReady, isReady]);
-
-  // After ready, keep overlay for fade-out, then unmount
-  useEffect(() => {
-    if (!isReady || !mountLoader) return;
-    const t = setTimeout(() => setMountLoader(false), 350);
-    return () => clearTimeout(t);
-  }, [isReady, mountLoader]);
+  // Disable loader overlay entirely to avoid spinner flash during hero animation
 
   const renderPage = () => {
     switch (currentPage) {
@@ -98,8 +113,32 @@ export default function App() {
         return <About />;
       case 'electronics':
         return <Electronics onPageChange={setCurrentPage} />;
+      case 'electronics-hardware':
+        return <HardwareDesign />;
+      case 'electronics-iot':
+        return <IoTSolutions />;
+      case 'electronics-embedded':
+        return <EmbeddedSystems />;
+      case 'electronics-signal':
+        return <SignalProcessing />;
+      case 'electronics-power':
+        return <PowerSystems />;
+      case 'electronics-testing':
+        return <TestingValidation />;
       case 'software':
         return <Software onPageChange={setCurrentPage} />;
+      case 'software-web':
+        return <WebApplications />;
+      case 'software-mobile':
+        return <MobileApplications />;
+      case 'software-enterprise':
+        return <EnterpriseSoftware />;
+      case 'software-data':
+        return <DataAnalytics />;
+      case 'software-devops':
+        return <DevOpsCloud />;
+      case 'software-ml':
+        return <AI_MachineLearning />;
       case 'contact':
         return <Contact />;
       case 'home':
@@ -310,7 +349,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen gradient-bg text-white">
-      {mountLoader && <LoaderOverlay isVisible={!isReady} />}
+      {/* Loader disabled to prevent flash */}
       <Navigation currentPage={currentPage} onPageChange={setCurrentPage} />
       
       <main style={{ opacity: isReady ? 1 : 0, transition: 'opacity .3s ease' }}>

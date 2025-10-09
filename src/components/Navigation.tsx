@@ -52,14 +52,23 @@ export default function Navigation({ currentPage, onPageChange }: NavigationProp
                 </svg>
               </a>
               <div className="submenu">
-                <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:text-white rounded" onClick={(e) => { e.preventDefault(); onPageChange('electronics'); setOpenMenu(null); (document.activeElement as HTMLElement)?.blur?.(); }}>
+                <a href="#electronics-hardware" className="block px-4 py-2 text-sm text-gray-300 hover:text-white rounded" onClick={(e) => { e.preventDefault(); onPageChange('electronics-hardware'); setOpenMenu(null); (document.activeElement as HTMLElement)?.blur?.(); }}>
                   Hardware Design
                 </a>
-                <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:text-white rounded" onClick={(e) => { e.preventDefault(); onPageChange('electronics'); setOpenMenu(null); (document.activeElement as HTMLElement)?.blur?.(); }}>
+                <a href="#electronics-iot" className="block px-4 py-2 text-sm text-gray-300 hover:text-white rounded" onClick={(e) => { e.preventDefault(); onPageChange('electronics-iot'); setOpenMenu(null); (document.activeElement as HTMLElement)?.blur?.(); }}>
                   IoT Solutions
                 </a>
-                <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:text-white rounded" onClick={(e) => { e.preventDefault(); onPageChange('electronics'); setOpenMenu(null); (document.activeElement as HTMLElement)?.blur?.(); }}>
-                  Circuit Analysis
+                <a href="#electronics-embedded" className="block px-4 py-2 text-sm text-gray-300 hover:text-white rounded" onClick={(e) => { e.preventDefault(); onPageChange('electronics-embedded'); setOpenMenu(null); (document.activeElement as HTMLElement)?.blur?.(); }}>
+                  Embedded Systems
+                </a>
+                <a href="#electronics-signal" className="block px-4 py-2 text-sm text-gray-300 hover:text-white rounded" onClick={(e) => { e.preventDefault(); onPageChange('electronics-signal'); setOpenMenu(null); (document.activeElement as HTMLElement)?.blur?.(); }}>
+                  Signal Processing
+                </a>
+                <a href="#electronics-power" className="block px-4 py-2 text-sm text-gray-300 hover:text-white rounded" onClick={(e) => { e.preventDefault(); onPageChange('electronics-power'); setOpenMenu(null); (document.activeElement as HTMLElement)?.blur?.(); }}>
+                  Power Systems
+                </a>
+                <a href="#electronics-testing" className="block px-4 py-2 text-sm text-gray-300 hover:text-white rounded" onClick={(e) => { e.preventDefault(); onPageChange('electronics-testing'); setOpenMenu(null); (document.activeElement as HTMLElement)?.blur?.(); }}>
+                  Testing & Validation
                 </a>
               </div>
             </li>
@@ -75,14 +84,23 @@ export default function Navigation({ currentPage, onPageChange }: NavigationProp
                 </svg>
               </a>
               <div className="submenu">
-                <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:text-white rounded" onClick={(e) => { e.preventDefault(); onPageChange('software'); setOpenMenu(null); (document.activeElement as HTMLElement)?.blur?.(); }}>
+                <a href="#software-web" className="block px-4 py-2 text-sm text-gray-300 hover:text-white rounded" onClick={(e) => { e.preventDefault(); onPageChange('software-web'); setOpenMenu(null); (document.activeElement as HTMLElement)?.blur?.(); }}>
                   Web Applications
                 </a>
-                <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:text-white rounded" onClick={(e) => { e.preventDefault(); onPageChange('software'); setOpenMenu(null); (document.activeElement as HTMLElement)?.blur?.(); }}>
+                <a href="#software-mobile" className="block px-4 py-2 text-sm text-gray-300 hover:text-white rounded" onClick={(e) => { e.preventDefault(); onPageChange('software-mobile'); setOpenMenu(null); (document.activeElement as HTMLElement)?.blur?.(); }}>
                   Mobile Apps
                 </a>
-                <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:text-white rounded" onClick={(e) => { e.preventDefault(); onPageChange('software'); setOpenMenu(null); (document.activeElement as HTMLElement)?.blur?.(); }}>
+                <a href="#software-enterprise" className="block px-4 py-2 text-sm text-gray-300 hover:text-white rounded" onClick={(e) => { e.preventDefault(); onPageChange('software-enterprise'); setOpenMenu(null); (document.activeElement as HTMLElement)?.blur?.(); }}>
                   Enterprise Software
+                </a>
+                <a href="#software-data" className="block px-4 py-2 text-sm text-gray-300 hover:text-white rounded" onClick={(e) => { e.preventDefault(); onPageChange('software-data'); setOpenMenu(null); (document.activeElement as HTMLElement)?.blur?.(); }}>
+                  Data Analytics
+                </a>
+                <a href="#software-devops" className="block px-4 py-2 text-sm text-gray-300 hover:text-white rounded" onClick={(e) => { e.preventDefault(); onPageChange('software-devops'); setOpenMenu(null); (document.activeElement as HTMLElement)?.blur?.(); }}>
+                  DevOps & Cloud
+                </a>
+                <a href="#software-ml" className="block px-4 py-2 text-sm text-gray-300 hover:text-white rounded" onClick={(e) => { e.preventDefault(); onPageChange('software-ml'); setOpenMenu(null); (document.activeElement as HTMLElement)?.blur?.(); }}>
+                  AI & Machine Learning
                 </a>
               </div>
             </li>

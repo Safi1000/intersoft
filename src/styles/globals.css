@@ -828,6 +828,36 @@ form .btn.submit-btn {
 .submit-btn.is-success { animation: successGlow 1.6s ease; }
 .submit-btn.is-success .submit-check { animation: slideFadeInCheck 0.45s cubic-bezier(.2,.7,.2,1) 0.05s forwards; }
 
+/* Hero underlines as full running parallelogram (no borders, full fill animation) */
+.hero-underline {
+  position: relative;
+  display: block;
+  width: 100%; /* spans full word width when wrapper is inline-block */
+  height: 10px;
+  margin: -24px auto 0 auto;
+  transform: skewX(-18deg);
+  background: linear-gradient(
+    90deg,
+    rgba(36,196,196,0) 0%,
+    var(--underline-color, #24c4c4) 50%,
+    rgba(36,196,196,0) 100%
+  );
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  animation: underlineSweep 4s linear infinite;
+  border: none;
+  overflow: hidden;
+}
+.underline-red { --underline-color: #bc3723; }
+.underline-teal { --underline-color: #24c4c4; }
+
+@keyframes underlineSweep {
+  0%, 4% { background-position: -200% 0; } /* hold at left (4%) */
+  50% { background-position: 200% 0; }     /* reach right at midpoint */
+  52%, 54% { background-position: 200% 0; } /* shorter hold at right (~2%) */
+  100% { background-position: -200% 0; }    /* return to left */
+}
+
 @keyframes fadeOut {
   to { opacity: 0; }
 }
@@ -941,6 +971,18 @@ form .btn.submit-btn {
   outline: none !important;
   box-shadow: none !important;
   transition: border-color .18s ease, box-shadow .18s ease, background-color .18s ease;
+}
+
+/* Footer forced spacing utilities (desktop and up) */
+@media (min-width: 768px) {
+  .footer-force-pr {
+    padding-right: 140px !important;
+    margin-right: 160px !important;
+  }
+  .footer-force-pl {
+    padding-left: 140px !important;
+    margin-left: 160px !important;
+  }
 }
 
 .form-dark input::placeholder,
