@@ -15,7 +15,7 @@ export default function Navigation({ currentPage, onPageChange }: NavigationProp
           {/* Logo */}
           <Reveal>
             <div className="flex items-center text-white">
-              <img src="/images/logo.jpg" alt="Intersoft logo" className="shrink-0 rounded-sm object-contain" style={{ height: '54px', width: '153px' }} />
+              <img src="/images/logo.png" alt="Intersoft logo" className="shrink-0 rounded-sm object-contain" style={{ height: '54px', width: '153px' }} />
             </div>
           </Reveal>
 

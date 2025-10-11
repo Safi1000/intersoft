@@ -14,7 +14,7 @@ export default function Footer({ onPageChange }: FooterProps) {
           <div className="flex-1 min-w-[260px] text-center">
             <div className="mb-8">
               <div className="flex items-center justify-center text-white mb-4">
-                <img src="/images/logo.jpg" alt="Intersoft logo" className="shrink-0 rounded-sm object-contain" style={{ height: '84px', width: '240px' }} />
+                <img src="/images/logo.png" alt="Intersoft logo" className="shrink-0 rounded-sm object-contain" style={{ height: '84px', width: '240px' }} />
               </div>
               <p className="text-gray-400 leading-relaxed max-w-md mx-auto">
                 Leading the future through cutting-edge electronics and innovative software solutions. 

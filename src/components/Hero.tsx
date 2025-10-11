@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import DecryptedText from './DecryptedText';
+import { Reveal } from './Reveal';
 // Use public path for production reliability
 
 interface HeroProps {
@@ -49,36 +49,16 @@ export default function Hero({ onPageChange, revealTrigger, revealDelayMs }: Her
       
       {/* Hero Content */}
       <div className="relative z-10 min-h-[calc(100vh-6rem)] md:min-h-[calc(100vh-7rem)] flex flex-col items-center justify-center text-center pt-25 md:pt-38" style={{ marginTop: '260px' }}>
-        <div className="flex flex-col items-center gap-0 md:gap-1">
+        <Reveal durationMs={350}>
           <div className="inline-block">
-            <DecryptedText
-              text={'INTERSOFT'}
-              animateOn="view"
-              revealDirection="center"
-              sequential
-              speed={80}
-              className="brand-red font-extrabold tracking-tight uppercase"
-              parentClassName="leading-[0.8]"
-              style={{ fontSize: 'clamp(2.03125rem, 6.09375vw, 9.75rem)' }}
-              encryptedClassName="brand-red"
+            <img
+              src="/images/logo.png"
+              alt="Intersoft International"
+              className="mx-auto object-contain logo-float"
+              style={{ height: 'clamp(72px, 14vw, 160px)', width: 'auto' }}
             />
-            <div className="hero-underline underline-red"></div>
           </div>
-          <div className="inline-block">
-            <DecryptedText
-              text={'INTERNATIONAL'}
-              animateOn="view"
-              revealDirection="center"
-              sequential
-              speed={80}
-              className="brand-teal font-extrabold tracking-tight uppercase"
-              parentClassName="leading-[0.8]"
-              style={{ fontSize: 'clamp(2.03125rem, 6.09375vw, 9.75rem)' }}
-              encryptedClassName="brand-teal"
-            />
-            <div className="hero-underline underline-teal"></div>
-          </div>
-        </div>
+        </Reveal>
       </div>
       
       {/* Subtitle and Cards positioned below the absolute h2 */}
@@ -87,10 +67,10 @@ export default function Hero({ onPageChange, revealTrigger, revealDelayMs }: Her
           {/* Subtitle */}
           <div className="mb-16">
             <div className="flex flex-wrap justify-center gap-3 md:gap-4">
-              <span className="px-4 py-2 text-sm md:text-base rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-white/90">
+              <span className="px-4 py-2 text-lg md:text-xl rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-white/90">
                 Electronics Solutions
               </span>
-              <span className="px-4 py-2 text-sm md:text-base rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-white/90">
+              <span className="px-4 py-2 text-lg md:text-xl rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-white/90">
                 Software Development
               </span>
             </div>
