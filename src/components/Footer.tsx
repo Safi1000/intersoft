@@ -33,12 +33,12 @@ export default function Footer({ onPageChange }: FooterProps) {
 
   return (
     <footer className="bg-black/80 backdrop-blur-sm border-t border-white/10">
-      <div className="max-w-6xl md:max-w-7xl mx-auto px-6 py-16">
+      <div className="max-w-6xl md:max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-16">
         <Reveal>
           {/* Top Row: Company Info */}
-          <div className="mb-8 -mt-4 md:-mt-6">
-            <div className="flex-1 min-w-[260px] text-center">
-              <div className="mb-8">
+          <div className="mb-6 sm:mb-8 -mt-2 md:-mt-6">
+            <div className="text-center">
+              <div className="mb-6 sm:mb-8">
                 <div className="flex items-center justify-center text-white mb-4">
                   <img
                     src={isLightMode ? '/images/logo_lightmode.jpg' : '/images/logo.png'}
@@ -47,25 +47,22 @@ export default function Footer({ onPageChange }: FooterProps) {
                     style={{ height: '84px', width: '240px' }}
                   />
                 </div>
-                <p className="text-gray-400 leading-relaxed max-w-md mx-auto">
+                <p className="text-gray-400 leading-relaxed max-w-md mx-auto text-sm sm:text-base px-2">
                   Leading the future through cutting-edge electronics and innovative software solutions.
                   Where hardware meets software in perfect harmony.
                 </p>
               </div>
-
             </div>
           </div>
         </Reveal>
 
-
-
         {/* Bottom Row: Sections */}
         <Reveal delay={0.08}>
-          <div className="mb-12 mt-[96px] flex flex-col sm:flex-row flex-wrap items-start justify-center w-full gap-y-12 gap-x-12 sm:gap-x-16 lg:gap-x-24 xl:gap-x-32">
-            {/* Company & Links (Left) */}
-            <div className="min-w-[220px] sm:basis-[260px] text-center flex-1 mt-[25px]">
-              <h3 className="text-lg font-bold text-white mb-8">Company</h3>
-              <ul className="space-y-3 lg:space-y-4">
+          <div className="footer-sections mb-8 sm:mb-12 mt-8 sm:mt-16 md:mt-[96px] flex flex-col sm:flex-row flex-wrap items-start justify-center w-full gap-y-8 sm:gap-y-12 gap-x-8 sm:gap-x-16 lg:gap-x-24 xl:gap-x-32">
+            {/* Company & Links */}
+            <div className="w-full sm:w-auto sm:min-w-[220px] sm:basis-[260px] text-center flex-1 mt-0 sm:mt-[25px]">
+              <h3 className="text-lg font-bold text-white mb-4 sm:mb-8">Company</h3>
+              <ul className="space-y-2 sm:space-y-3 lg:space-y-4">
                 <li><a href="#home" onClick={(e) => { e.preventDefault(); onPageChange('home'); }} className="text-gray-400 hover:text-[#24c4c4] transition-colors">Home</a></li>
                 <li><a href="#about" onClick={(e) => { e.preventDefault(); onPageChange('about'); }} className="text-gray-400 hover:text-[#24c4c4] transition-colors">About</a></li>
                 <li><a href="#electronics" onClick={(e) => { e.preventDefault(); onPageChange('electronics'); }} className="text-gray-400 hover:text-[#24c4c4] transition-colors">Electronics</a></li>
@@ -74,10 +71,10 @@ export default function Footer({ onPageChange }: FooterProps) {
               </ul>
             </div>
 
-            {/* Software (Center) */}
-            <div className="min-w-[220px] sm:basis-[260px] text-center flex-none mt-[25px]">
-              <h3 className="text-lg font-bold text-white mb-8">Software</h3>
-              <ul className="space-y-3 lg:space-y-4">
+            {/* Software */}
+            <div className="w-full sm:w-auto sm:min-w-[220px] sm:basis-[260px] text-center flex-none mt-0 sm:mt-[25px]">
+              <h3 className="text-lg font-bold text-white mb-4 sm:mb-8">Software</h3>
+              <ul className="space-y-2 sm:space-y-3 lg:space-y-4">
                 <li><a href="#software-web" onClick={(e) => { e.preventDefault(); onPageChange('software-web'); }} className="text-gray-400 hover:text-[#24c4c4] transition-colors">Web Applications</a></li>
                 <li><a href="#software-mobile" onClick={(e) => { e.preventDefault(); onPageChange('software-mobile'); }} className="text-gray-400 hover:text-[#24c4c4] transition-colors">Mobile Apps</a></li>
                 <li><a href="#software-enterprise" onClick={(e) => { e.preventDefault(); onPageChange('software-enterprise'); }} className="text-gray-400 hover:text-[#24c4c4] transition-colors">Enterprise Software</a></li>
@@ -87,10 +84,10 @@ export default function Footer({ onPageChange }: FooterProps) {
               </ul>
             </div>
 
-            {/* Electronics (Right) */}
-            <div className="min-w-[220px] sm:basis-[260px] text-center flex-1 mt-[25px]">
-              <h3 className="text-lg font-bold text-white mb-8">Electronics</h3>
-              <ul className="space-y-3 lg:space-y-4">
+            {/* Electronics */}
+            <div className="w-full sm:w-auto sm:min-w-[220px] sm:basis-[260px] text-center flex-1 mt-0 sm:mt-[25px]">
+              <h3 className="text-lg font-bold text-white mb-4 sm:mb-8">Electronics</h3>
+              <ul className="space-y-2 sm:space-y-3 lg:space-y-4">
                 <li>
                   <a href="#electronics-hardware" onClick={(e) => { e.preventDefault(); onPageChange('electronics-hardware'); }} className="text-gray-400 hover:text-[#24c4c4] transition-colors">Hardware Design</a>
                 </li>
@@ -116,9 +113,9 @@ export default function Footer({ onPageChange }: FooterProps) {
 
         {/* Bottom Bar */}
         <Reveal delay={0.08}>
-          <div className="pt-8 border-t border-white/10">
+          <div className="pt-6 sm:pt-8 border-t border-white/10">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-gray-400 text-sm">
+              <p className="text-gray-400 text-xs sm:text-sm">
                 © 2024 Intersoft International. All rights reserved.
               </p>
             </div>

@@ -878,6 +878,236 @@ ul.nav-menu li:hover .dropdown-arrow {
   transition: transform 0.25s ease;
 }
 
+/* ===== BODY SCROLL LOCK ===== */
+.body-scroll-locked {
+  overflow: hidden !important;
+  position: fixed;
+  width: 100%;
+}
+
+/* ===== HAMBURGER BUTTON ===== */
+.hamburger-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  gap: 5px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  padding: 8px;
+  z-index: 60;
+  transition: border-color 0.3s ease;
+}
+
+.hamburger-btn:hover {
+  border-color: rgba(36, 196, 196, 0.5);
+}
+
+.hamburger-line {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: #d6d6d6;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger-line.open:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger-line.open:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburger-line.open:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ===== MOBILE OVERLAY ===== */
+.mobile-nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 40;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.mobile-nav-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ===== MOBILE NAV PANEL ===== */
+.mobile-nav-panel {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(320px, 85vw);
+  height: 100vh;
+  height: 100dvh;
+  background: #0a0a0a;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 45;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobile-nav-panel.active {
+  transform: translateX(0);
+}
+
+.mobile-nav-content {
+  display: flex;
+  flex-direction: column;
+  padding: 80px 24px 32px;
+  gap: 2px;
+}
+
+/* ===== MOBILE NAV LINKS ===== */
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 14px 16px;
+  color: #b0b0b0;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.25s ease, background-color 0.25s ease;
+  text-align: left;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link:focus {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.mobile-nav-link.active {
+  color: #24c4c4;
+  background-color: rgba(36, 196, 196, 0.08);
+}
+
+/* ===== MOBILE ACCORDION ARROW ===== */
+.accordion-arrow {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  color: currentColor;
+}
+
+.accordion-arrow.rotated {
+  transform: rotate(180deg);
+}
+
+/* ===== MOBILE SUBMENU ===== */
+.mobile-submenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-submenu.expanded {
+  max-height: 500px;
+}
+
+.mobile-submenu-link {
+  display: block;
+  padding: 10px 16px 10px 32px;
+  color: #888;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: color 0.25s ease, background-color 0.25s ease;
+}
+
+.mobile-submenu-link:hover,
+.mobile-submenu-link:focus {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Show mobile-only elements below md breakpoint (768px) */
+@media (max-width: 767px) {
+  .mobile-nav-overlay {
+    display: block;
+  }
+
+  .mobile-nav-panel {
+    display: block;
+  }
+}
+
+/* ===== LIGHT MODE — MOBILE NAV ===== */
+.light .hamburger-btn {
+  border-color: rgba(109, 76, 65, 0.3);
+}
+
+.light .hamburger-btn:hover {
+  border-color: rgba(109, 76, 65, 0.6);
+}
+
+.light .hamburger-line {
+  background-color: #4a3728;
+}
+
+.light .mobile-nav-panel {
+  background: #faf8f6;
+  border-left-color: rgba(109, 76, 65, 0.15);
+}
+
+.light .mobile-nav-link {
+  color: #5d4037;
+}
+
+.light .mobile-nav-link:hover,
+.light .mobile-nav-link:focus {
+  color: #3e2723;
+  background-color: rgba(109, 76, 65, 0.08);
+}
+
+.light .mobile-nav-link.active {
+  color: #6d4c41;
+  background-color: rgba(109, 76, 65, 0.12);
+}
+
+.light .mobile-submenu-link {
+  color: #8d6e63;
+}
+
+.light .mobile-submenu-link:hover,
+.light .mobile-submenu-link:focus {
+  color: #3e2723;
+  background-color: rgba(109, 76, 65, 0.08);
+}
+
+.light .mobile-nav-overlay {
+  background: rgba(255, 255, 255, 0.5);
+}
+
 /* Basic button look (non-hover state) */
 .btn {
   position: relative;
@@ -2294,4 +2524,84 @@ form .btn.submit-btn {
 .light .contact-title-highlight {
   color: #6d4c41 !important;
   -webkit-text-fill-color: #6d4c41 !important;
+}
+
+/* ===== RESPONSIVE OVERRIDES ===== */
+
+/* === MOBILE (below 768px) === */
+@media (max-width: 767px) {
+
+  /* Hide desktop nav, show hamburger + mobile panel */
+  ul.nav-menu.desktop-nav {
+    display: none !important;
+  }
+
+  .mobile-nav-overlay {
+    display: block;
+  }
+
+  .mobile-nav-panel {
+    display: block;
+  }
+
+  /* Hero adjustments for mobile */
+  .hero-content-wrapper {
+    margin-top: 80px !important;
+    padding-top: 4rem !important;
+  }
+
+  /* Mission block on mobile */
+  .mission-text-block {
+    padding: 1.5rem !important;
+  }
+
+  .mission-text-block blockquote {
+    font-size: 1.15rem !important;
+    line-height: 1.6 !important;
+  }
+
+  /* Footer — reduce spacing on mobile */
+  .footer-sections {
+    margin-top: 2rem !important;
+    gap: 2rem !important;
+  }
+
+  .footer-sections>div {
+    margin-top: 0 !important;
+  }
+
+  footer img[alt="Intersoft logo"] {
+    height: 60px !important;
+    width: 172px !important;
+  }
+}
+
+/* === TABLET (768px – 1023px) === */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  /* Hero adjustments for tablet */
+  .hero-content-wrapper {
+    margin-top: 180px !important;
+  }
+
+  .mission-text-block {
+    padding: 2rem !important;
+  }
+}
+
+/* === DESKTOP (768px+) === */
+@media (min-width: 768px) {
+
+  /* Hide all mobile nav elements on desktop */
+  .hamburger-btn {
+    display: none !important;
+  }
+
+  .mobile-nav-panel {
+    display: none !important;
+  }
+
+  .mobile-nav-overlay {
+    display: none !important;
+  }
 }

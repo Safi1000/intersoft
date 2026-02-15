@@ -38,7 +38,7 @@ export default function Hero() {
       <div className="wave wave-3"></div>
 
       {/* Hero Content */}
-      <div className="relative z-10 min-h-[calc(100vh-6rem)] md:min-h-[calc(100vh-7rem)] flex flex-col items-center justify-center text-center pt-25 md:pt-38" style={{ marginTop: '260px' }}>
+      <div className="relative z-10 min-h-[calc(100vh-6rem)] md:min-h-[calc(100vh-7rem)] flex flex-col items-center justify-center text-center pt-25 md:pt-38 hero-content-wrapper" style={{ marginTop: '260px' }}>
         <Reveal durationMs={350}>
           <div className="inline-block">
             <img
