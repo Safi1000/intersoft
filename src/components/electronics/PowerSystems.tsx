@@ -9,7 +9,7 @@ export default function PowerSystems() {
         <div className="text-center mb-12">
           <Reveal>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="brand-teal">Power</span> Systems
+              <span className="brand-teal page-title-highlight">Power</span> Systems
             </h1>
           </Reveal>
           <Reveal delay={0.08}>
@@ -40,7 +40,7 @@ export default function PowerSystems() {
         </div>
 
         <Reveal>
-          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8">
+          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8" style={{ marginBottom: '10px' }}>
             <h3 className="text-xl font-bold mb-4">Safety & Compliance</h3>
             <p className="text-white/90">We design for UL/CE compliance with protections, isolation, and thorough validation to safeguard users and hardware.</p>
           </div>

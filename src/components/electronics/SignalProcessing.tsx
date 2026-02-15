@@ -9,7 +9,7 @@ export default function SignalProcessing() {
         <div className="text-center mb-12">
           <Reveal>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="brand-teal">Signal</span> Processing
+              <span className="brand-teal page-title-highlight">Signal</span> Processing
             </h1>
           </Reveal>
           <Reveal delay={0.08}>
@@ -40,7 +40,7 @@ export default function SignalProcessing() {
         </div>
 
         <Reveal>
-          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8">
+          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8" style={{ marginBottom: '10px' }}>
             <h3 className="text-xl font-bold mb-4">Accuracy</h3>
             <p className="text-white/90">From anti‑aliasing to quantization control, our designs preserve signal integrity for trustworthy results.</p>
           </div>

@@ -9,7 +9,7 @@ export default function MobileApplications() {
         <div className="text-center mb-12">
           <Reveal>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="brand-red">Mobile</span> Applications
+              <span className="brand-red page-title-highlight">Mobile</span> Applications
             </h1>
           </Reveal>
           <Reveal delay={0.08}>
@@ -40,7 +40,7 @@ export default function MobileApplications() {
         </div>
 
         <Reveal>
-          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8">
+          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8" style={{ marginBottom: '10px' }}>
             <h3 className="text-xl font-bold mb-4">User Experience</h3>
             <p className="text-white/90">We ship fluid, responsive interfaces with attention to native patterns and accessibility.</p>
           </div>

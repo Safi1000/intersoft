@@ -9,7 +9,7 @@ export default function HardwareDesign() {
         <div className="text-center mb-12">
           <Reveal>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="brand-teal">Hardware</span> Design
+              <span className="brand-teal page-title-highlight">Hardware</span> Design
             </h1>
           </Reveal>
           <Reveal delay={0.08}>
@@ -40,7 +40,7 @@ export default function HardwareDesign() {
         </div>
 
         <Reveal>
-          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8">
+          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8" style={{ marginBottom: '10px' }}>
             <h3 className="text-xl font-bold mb-4">Outcomes</h3>
             <p className="text-white/90">Production‑ready designs with clean documentation, repeatable builds, and test coverage that reduces risk and shortens time‑to‑market.</p>
           </div>

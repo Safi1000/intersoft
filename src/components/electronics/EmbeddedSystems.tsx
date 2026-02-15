@@ -9,7 +9,7 @@ export default function EmbeddedSystems() {
         <div className="text-center mb-12">
           <Reveal>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="brand-teal">Embedded</span> Systems
+              <span className="brand-teal page-title-highlight">Embedded</span> Systems
             </h1>
           </Reveal>
           <Reveal delay={0.08}>
@@ -40,7 +40,7 @@ export default function EmbeddedSystems() {
         </div>
 
         <Reveal>
-          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8">
+          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8" style={{ marginBottom: '10px' }}>
             <h3 className="text-xl font-bold mb-4">Reliability</h3>
             <p className="text-white/90">We prioritize watchdogs, fail‑safes, and robust error handling to ensure predictable operation in the field.</p>
           </div>

@@ -9,7 +9,7 @@ export default function IoTSolutions() {
         <div className="text-center mb-12">
           <Reveal>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="brand-teal">IoT</span> Solutions
+              <span className="brand-teal page-title-highlight">IoT</span> Solutions
             </h1>
           </Reveal>
           <Reveal delay={0.08}>
@@ -40,7 +40,7 @@ export default function IoTSolutions() {
         </div>
 
         <Reveal>
-          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8">
+          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8" style={{ marginBottom: '10px' }}>
             <h3 className="text-xl font-bold mb-4">Security First</h3>
             <p className="text-white/90">We implement secure boot, encrypted storage, and authenticated communication to protect data and devices across the lifecycle.</p>
           </div>

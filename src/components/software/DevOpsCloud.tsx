@@ -9,7 +9,7 @@ export default function DevOpsCloud() {
         <div className="text-center mb-12">
           <Reveal>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="brand-red">DevOps</span> & Cloud
+              <span className="brand-red page-title-highlight">DevOps</span> & Cloud
             </h1>
           </Reveal>
           <Reveal delay={0.08}>
@@ -40,7 +40,7 @@ export default function DevOpsCloud() {
         </div>
 
         <Reveal>
-          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8">
+          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8" style={{ marginBottom: '10px' }}>
             <h3 className="text-xl font-bold mb-4">Velocity</h3>
             <p className="text-white/90">Ship faster with fewer failures by codifying environments and automating quality gates.</p>
           </div>

@@ -9,7 +9,7 @@ export default function WebApplications() {
         <div className="text-center mb-12">
           <Reveal>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="brand-red">Web</span> Applications
+              <span className="brand-red page-title-highlight">Web</span> Applications
             </h1>
           </Reveal>
           <Reveal delay={0.08}>
@@ -40,7 +40,7 @@ export default function WebApplications() {
         </div>
 
         <Reveal>
-          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8">
+          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8" style={{ marginBottom: '10px' }}>
             <h3 className="text-xl font-bold mb-4">Outcomes</h3>
             <p className="text-white/90">Reliable, fast, and maintainable web applications with clean codebases and CI/CD pipelines.</p>
           </div>

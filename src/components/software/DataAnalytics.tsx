@@ -9,7 +9,7 @@ export default function DataAnalytics() {
         <div className="text-center mb-12">
           <Reveal>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="brand-red">Data</span> Analytics
+              <span className="brand-red page-title-highlight">Data</span> Analytics
             </h1>
           </Reveal>
           <Reveal delay={0.08}>
@@ -40,7 +40,7 @@ export default function DataAnalytics() {
         </div>
 
         <Reveal>
-          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8">
+          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8" style={{ marginBottom: '10px' }}>
             <h3 className="text-xl font-bold mb-4">Insights</h3>
             <p className="text-white/90">Deliver trusted insights with validated models and clear visual narratives for stakeholders.</p>
           </div>

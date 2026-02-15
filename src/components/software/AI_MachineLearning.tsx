@@ -9,7 +9,7 @@ export default function AI_MachineLearning() {
         <div className="text-center mb-12">
           <Reveal>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="brand-red">AI</span> & Machine Learning
+              <span className="brand-red page-title-highlight">AI</span> & Machine Learning
             </h1>
           </Reveal>
           <Reveal delay={0.08}>
@@ -40,7 +40,7 @@ export default function AI_MachineLearning() {
         </div>
 
         <Reveal>
-          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8">
+          <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-8" style={{ marginBottom: '10px' }}>
             <h3 className="text-xl font-bold mb-4">Productionization</h3>
             <p className="text-white/90">From notebooks to production with versioned datasets, reproducible training, and monitoring.</p>
           </div>
